@@ -3,17 +3,15 @@ import math
 import os
 
 
-def imgOut(pixArray, name='wow.png'):
+def imgOut(pixArray, name='img2.ppm'):
 	ylen = len(pixArray)
 	xlen = len(pixArray[0])
-	with open('temp.ppm', 'w') as f:
+	with open(name, 'w') as f:
 		f.write('P3 %d %d 255\n' % (xlen, ylen))
 		for row in pixArray:
 			for rgb in row:
 				f.write('%d %d %d ' % rgb)
 			f.write('\n')  # unnecessary but looks good
-	os.system('convert temp.ppm ' + name)
-	os.system('rm temp.ppm')
 
 xr512 = xrange(512)
 pixels = []
